@@ -1,40 +1,42 @@
 import React from "react";
 
-function Nav() {
-  const categories = [
-    {
-      name: "epic",
-      description: "All epic information",
-    },
-    {
-      name: "discord",
-      description: "All discord information",
-    },
-    {
-      name: "contact info",
-      description: "contact us",
-    },
-  ];
-
-  function categorySelected() {
-    console.log("hello");
-  }
+function Nav(props) {
+  const { setCurrentCategory } = props;
 
   return (
     <header className="">
       <h2>Logo or title of app</h2>
       <nav>
-        <ul className="">
-          <li className="">
-            <a href="#home">Home</a>
-          </li>
-          <li>Steam</li>
-          {categories.map((category) => (
-            <li className="" key={category.name}>
-              <span onClick={categorySelected}>{category.name}</span>
+        <div className="menuContainer">
+          <ul className="menu">
+            <a
+              className="menu-button icon-plus"
+              href="#menu"
+              title="Show navigation"
+            ></a>
+            <a
+              className="menu-button icon-minus"
+              href="#0"
+              title="Hide navigation"
+            ></a>
+            <li className="menu-item">
+              <a href="#home" onClick={() => setCurrentCategory("homePage")}>
+                Home Page
+              </a>
             </li>
-          ))}
-        </ul>
+            <li className="menu-item">
+              <span onClick={() => setCurrentCategory("steam")}>Steam!</span>
+            </li>
+            <li className="menu-item">
+              <span onClick={() => setCurrentCategory("epic")}> Epic!</span>
+            </li>
+            <li className="menu-item">
+              <span onClick={() => setCurrentCategory("discord")}>
+                Discord!
+              </span>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   );
