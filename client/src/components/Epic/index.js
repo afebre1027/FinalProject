@@ -2,10 +2,19 @@ import React from "react";
 
 function Epic() {
   return (
-    <section>
-      <h1 className="">Epic information</h1>
-      <p>epic games</p>
-      <p>epic friends</p>
+    <section className="epicContainer">
+      <div className="card epicInfo">
+        <img
+          className="card-img-top"
+          src="../assets/images/background.jpg"
+          alt="Card image cap"
+        ></img>
+        <div className="card-body">
+          <h3 className="card-text">Username</h3>
+          <h4 className="card-text">friends</h4>
+          <h5 className="card-text">games</h5>
+        </div>
+      </div>
     </section>
   );
 }

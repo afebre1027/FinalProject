@@ -26,11 +26,16 @@ function Home() {
               </div>
             </div>
           </Col>
-          <Col sm={9} className=" main">
-            <div className="comment-container">
-              <div className="comments">
-                <h1>name of friend</h1>
-                <p>comment posted</p>
+          <Col sm={9} className="main">
+            <div className="comment-container card">
+              <div className="comments card-header">
+                <h1> username of the comment</h1>
+              </div>
+              <div className="card-body">
+                <h5 className="card-text">comment goes here</h5>
+              </div>
+              <div className="card-footer">
+                <h8>like comment or respond to comment</h8>
               </div>
             </div>
           </Col>

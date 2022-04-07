@@ -6,7 +6,7 @@
 
 .sideBar {
   height: 100%;
-  width: 160px;
+  width: auto;
   top: 33.35vh;
   left: 0;
   background: #34a0a4;
@@ -15,13 +15,14 @@
 }
 
 div.col-sm-9 {
-  padding:0px;
-  margin: 0px;
+  padding:20px;
+  margin: 20px 5% 10px 0px;
 }
 
 div.col {
-  padding:0;
-  margin: 0;
+  padding: 0px;
+  margin: 10px;
+  border: 1px solid #fff;
 }
 
 header {
@@ -42,6 +43,7 @@ header {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: sticky;
 }
 
 .menu-item {
@@ -51,6 +53,29 @@ header {
 
 .homeContainer {
   background-color: #d0f4de;
+}
+.steamContainer {
+  background-color: #133c55;
+}
+
+.steamInfo {
+  border: 1px solid #133c55;
+  padding: 10px;
+  margin: 30px;
+  text-align: center;
+}
+
+.epicInfo {
+  border: 1px solid #133c55;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+.discordInfo {
+  border: 1px solid #133c55;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
 }
 
 
