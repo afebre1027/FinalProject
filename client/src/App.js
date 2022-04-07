@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./components/Home";
-import Nav from "./components/Nav";
 import Header from "./components/Header";
 import Steam from "./components/steam";
 import Epic from "./components/Epic";
 import Discord from "./components/Discord";
+import Footer from "./components/Footer";
 
 function App() {
   function renderPage(page) {
@@ -30,6 +31,7 @@ function App() {
         setCurrentCategory={setCurrentCategory}
       />
       <main>{renderPage(currentCategory)}</main>
+      <Footer></Footer>
     </div>
   );
 }
