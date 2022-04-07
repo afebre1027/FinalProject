@@ -21,10 +21,10 @@ const commentSchema = new Schema(
             required: true
         },
 
-        profile: {
-            type: String,
-            required: true
-        }
+        // profile: {
+        //     type: String,
+        //     required: true
+        // }
     },
 
     {
