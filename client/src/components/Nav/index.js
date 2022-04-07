@@ -5,35 +5,25 @@ function Nav(props) {
 
   return (
     <header className="">
-      <h2>Logo or title of app</h2>
+      <h2>All In One</h2>
       <nav>
         <div className="menuContainer">
           <ul className="menu">
-            <a
-              className="menu-button icon-plus"
-              href="#menu"
-              title="Show navigation"
-            ></a>
-            <a
-              className="menu-button icon-minus"
-              href="#0"
-              title="Hide navigation"
-            ></a>
             <li className="menu-item">
-              <a href="#home" onClick={() => setCurrentCategory("homePage")}>
+              <h3 href="#home" onClick={() => setCurrentCategory("homePage")}>
                 Home Page
-              </a>
+              </h3>
             </li>
             <li className="menu-item">
-              <span onClick={() => setCurrentCategory("steam")}>Steam!</span>
+              <h3 onClick={() => setCurrentCategory("steam")}>Steam!</h3>
             </li>
             <li className="menu-item">
-              <span onClick={() => setCurrentCategory("epic")}> Epic!</span>
+              <h3 onClick={() => setCurrentCategory("epic")}> Epic!</h3>
             </li>
             <li className="menu-item">
-              <span onClick={() => setCurrentCategory("discord")}>
+              <h3 onClick={() => setCurrentCategory("discord")}>
                 Discord!
-              </span>
+              </h3>
             </li>
           </ul>
         </div>
