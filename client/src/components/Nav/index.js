@@ -1,4 +1,6 @@
 import React from "react";
+import { FaSteam, FaHome, FaDiscord, FaPlaystation } from "react-icons/fa";
+
 
 function Nav(props) {
   const { setCurrentCategory } = props;
@@ -11,18 +13,18 @@ function Nav(props) {
           <ul className="menu">
             <li className="menu-item">
               <h3 href="#home" onClick={() => setCurrentCategory("homePage")}>
-                Home Page
+                <FaHome/>
               </h3>
             </li>
             <li className="menu-item">
-              <h3 onClick={() => setCurrentCategory("steam")}>Steam!</h3>
+              <h3 onClick={() => setCurrentCategory("steam")}><FaSteam /></h3>
             </li>
             <li className="menu-item">
-              <h3 onClick={() => setCurrentCategory("epic")}> Epic!</h3>
+              <h3 onClick={() => setCurrentCategory("epic")}><FaPlaystation/></h3>
             </li>
             <li className="menu-item">
               <h3 onClick={() => setCurrentCategory("discord")}>
-                Discord!
+                <FaDiscord/>
               </h3>
             </li>
           </ul>

@@ -3,16 +3,17 @@ import React from "react";
 function Epic() {
   return (
     <section className="epicContainer">
-      <div className="card epicInfo">
-        <img
-          className="card-img-top"
-          src="../assets/images/background.jpg"
-          alt="Card image cap"
-        ></img>
-        <div className="card-body">
-          <h3 className="card-text">Username</h3>
-          <h4 className="card-text">friends</h4>
-          <h5 className="card-text">games</h5>
+      <div className="epicIcon"></div>
+      <div class="card epicInfo">
+        <div class="card-header">
+          <h2> Username </h2>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Games go here</h4>
+          <h6 class="card-text">friends list goes here</h6>
+          <a href="#" class="btn btn-primary">
+            sign in / login link
+          </a>
         </div>
       </div>
     </section>
