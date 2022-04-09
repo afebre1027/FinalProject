@@ -1,38 +1,54 @@
 import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
 
 import Home from "./components/Home";
 import Header from "./components/Header";
-import Steam from "./components/steam";
-import Epic from "./components/Epic";
-import Discord from "./components/Discord";
+import Login from "./pages/Login";
+import NoMatch from "./pages/NoMatch";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
+import SingleComment from "./pages/SingleComment";
 import Footer from "./components/Footer";
 
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
 function App() {
-  function renderPage(page) {
-    if (page === "homePage") {
-      return <Home />;
-    } else if (page === "steam") {
-      return <Steam />;
-    } else if (page === "epic") {
-      return <Epic />;
-    } else if (page === "discord") {
-      return <Discord />;
-    }
-  }
-
-  const [currentCategory, setCurrentCategory] = useState("homePage");
-
   return (
-    <div>
-      <Header
-        currentCategory={currentCategory}
-        setCurrentCategory={setCurrentCategory}
-      />
-      <main>{renderPage(currentCategory)}</main>
-      <Footer></Footer>
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/comment/:id?" component={SingleComment} />
+
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+          <Footer></Footer>
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
