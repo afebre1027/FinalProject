@@ -24,7 +24,7 @@ export const ADD_USER=gql`
     }
 `;
 
-export const ADD_FRIEND = gql `
+export const ADD_FRIEND = gql`
     mutation addFriend($id: ID!) {
         addFriend(friendId: $id) {
             _id
@@ -37,17 +37,52 @@ export const ADD_FRIEND = gql `
     }
 `;
 
-export const ADD_COMMENT = gql `
-    mutation addComment($profile: String!, $username: String!, $commentText: String!){
-        addComment(profile: $profile, username: $username, commentText: $commentText){
+export const ADD_COMMENT = gql`
+    mutation addComment($commentText: String!){
+        addComment(commentText: $commentText){
             _id
             username
-            comments{
-                _id
+            commentText
+            createdAt
+            replies{
                 username
-                commentText
-                createdAt
+                replyText
             }
+            likeCount
+            replyCount
         }
     }
 `;
+
+export const ADD_REPLY = gql`
+    mutation addReply($commentID: ID!, replyText: String!){
+        addReply(commentId: $commentID, replyText: $replyText){
+            _id
+            commentText
+            username
+            replies{
+                createdAt
+                replyText
+                username
+            }
+            replyCount
+            likeCount
+        }
+    }
+`;
+
+export const LIKE_COMMENT = gql`
+mutation likeComment($commentId: ID!){
+    likeComment(commentID: $commentId) {
+      commentText
+      createdAt
+      likeCount
+      replies{
+          username
+          replyText
+          created
+      }
+      replyCount
+    }
+  } 
+`

@@ -10,12 +10,6 @@ export const QUERY_USER = gql `
                 _id
                 username
             }
-            comments{
-                _id
-                username
-                commentText
-                createdAt
-            }
         }
     }
 `;
@@ -30,26 +24,37 @@ export const QUERY_ME = gql`
                 _id
                 username
             }
-            comments{
-                _id
-                username
-                commentText
-                createdAt
-            }
         }
     }
 `;
 
-export const QUERY_ME_BASIC = gql`
-    {
-        me{
+export const QUERY_SINGLE_COMMENT= gql`
+    query comment($id: ID!){
+        comment(_id: $id){
             _id
+            commentText
+            createdAt
             username
-            email
-            friends{
-                _id
+            replies{
+                replyText
                 username
+                createdAt
             }
+            replyCount
+            likeCount
+        }
+    }
+`;
+
+export const QUERY_COMMENTS = gql`
+    query comments{
+        comments {
+        _id
+        commentText
+        createdAt
+        username
+        replyCount    
+        likeCount
         }
     }
 `;

@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Comment} = require('../models');
 const {AuthenticationError} = require('apollo-server-express');
 const {signToken} = require('../utils/auth');
 
@@ -8,14 +8,12 @@ const resolvers = {
             return User.find()
                 .select('-__v -password')
                 .populate('friends')
-                .populate('comments');
         },
 
         user: async (parent, {username}) => {
             return User.findOne({username})
                 .select('-__v -password')
                 .populate('friends')
-                .populate('comments');
         },
 
         me: async (parent, args, context) => {
@@ -23,12 +21,25 @@ const resolvers = {
                 const userData = await User.findOne({_id: context.user._id})
                     .select('-__v -password')
                     .populate('friends')
-                    .populate('comments');
 
                 return userData;
             }
 
             throw new AuthenticationError('Not logged in');
+        },
+        comment: async (parent, {_id}) => {
+           const comment = await Comment.findOne({_id})
+                .select('-__v')
+                
+            return comment;
+            
+        },
+        comments: async () => {
+            const comments = await Comment.find()
+                .select('-__v')
+                .populate('replies')
+            
+            return comments;
         }
     },
     Mutation: {
@@ -54,18 +65,54 @@ const resolvers = {
             const token = signToken(user);
             return {token, user};
         },
-        addComment: async (parent, {profile, username, commentText}, context) => {
+        addComment: async (parent, args, context) => {
             if(context.user){
-                const updatedUser = await User.findOneAndUpdate(
-                    {username: profile},
-                    {$push: {comments: {commentText, username: username}}},
-                    {new: true, runValidators: true}
-                ).populate('comments');
+                const comment = await Comment.create({...args, username:context.user.username});
+                
 
-                return updatedUser;
+                // const updatedUser = await User.findOneAndUpdate(
+                //     {username: args.profile},
+                //     {$push: {comments: comment._id }},
+                //     {new: true, runValidators: true}
+                // ).populate('comments');
+
+                return  comment;
             }
 
             throw new AuthenticationError('Please log in to leave a comment!');
+        },
+        deleteComment: async(parent, {commentID}, context) => {
+            const comment = await Comment.findByIdAndDelete(
+                {_id: commentID}
+            );
+            return 'Comment deleted';
+        },
+        likeComment: async(parent, {commentID}, context) => {
+            if(context.user){
+
+                const likedComment = await Comment.findByIdAndUpdate(
+                    {_id: commentID},
+                    {$push: {likes: context.user._id}},
+                    {new: true}
+                )
+
+                return likedComment;
+            }
+
+            throw new AuthenticationError ('Please log in to like a comment!');
+        },
+        addReply: async(parent, {commentID, replyText}, context) =>{
+            if(context.user){
+                const updateComment = await Comment.findOneAndUpdate(
+                    {_id: commentID},
+                    {$push: {replies: {replyText, username: context.user.username}}},
+                    {new:true, runValidators: true},
+                );
+
+                return updateComment;
+            }
+
+            throw new AuthenticationError('You need to be logged in to leave a reply!');
         },
         addFriend: async(parent, {friendId}, context) => {
             if(context.user){
