@@ -4,36 +4,74 @@
   box-sizing: border-box;
   }
 
-.sideBar {
-  height: 100%;
-  width: 160px;
-  top: 33.35vh;
-  left: 0;
-  background: #34a0a4;
-  overflow-x: hidden;
-  padding: 20px 20px;
-}
-
-div.col-sm-9 {
-  padding:0px;
-  margin: 0px;
-}
-
-div.col {
-  padding:0;
-  margin: 0;
-}
-
+/* header and nav bar */
 header {
   background-color: #133c55;
-  min-height: 30vh;
+  min-height: 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-bottom: 0px;
 }
+
+.menu-item {
+  display: flex;
+  flex-direction: row;
+}
+
+
+ul.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+li.menu-item {
+  padding: 7px;
+}
+
+nav {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+nav  li {
+  cursor: pointer;
+}
+
+/* home page, left profile, center comments & footer */
+.homeContainer {
+  background-color: #d0f4de;
+}
+.sideBar {
+  height: 100%;
+  width: auto;
+  top: 33.35vh;
+  left: 0;
+  background:linear-gradient(#133c55, #34a0a4 ,#133c55);
+  overflow-x: hidden;
+  padding: 20px 20px;
+  color: #fff;
+}
+.responseForm {
+float: right;
+}
+
+div.col-sm-9 {
+  padding:20px;
+  margin: 20px 5% 10px 0px;
+}
+
+div.col {
+  padding: 0px;
+  margin: 0px;
+  /* border: 1px solid #fff; */
+}
+
 .footer {
   background-color: #133c55;
   display: flex;
@@ -42,15 +80,48 @@ header {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
 }
 
-.menu-item {
-  display: flex;
-  flex-direction: row;
+/*  steam page */
+.steamContainer {
+  background-color: #233038;
+  padding: 30px;
 }
 
-.homeContainer {
-  background-color: #d0f4de;
+.steamInfo {
+  border: 1px solid #233038;
+  padding: auto;
+  margin: auto;
+  width: 60%;
+  text-align: center;
+}
+
+.steamIcon {
+  text-align: center;
+  color: white;
+}
+
+/* epic page */
+.epicContainer {
+  background-color: #4e5c64;
+  padding: 30px;
+}
+
+.epicInfo {
+  border: 1px solid #233038;
+  padding: auto;
+  margin: auto;
+  width: 60%;
+  text-align: center;
+}
+
+/* discord or other page */
+.discordInfo {
+  border: 1px solid #133c55;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
 }
 
 
