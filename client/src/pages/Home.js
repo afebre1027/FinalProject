@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_COMMENTS, QUERY_ME_BASIC } from "../utils/queries";
+import { QUERY_COMMENTS, QUERY_ME } from "../utils/queries";
 
 import CommentList from "../components/CommentList";
 import FriendList from "../components/FriendList";
@@ -11,7 +11,7 @@ const Home = () => {
   // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_COMMENTS);
 
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { data: userData } = useQuery(QUERY_ME);
 
   const comments = data?.comments || [];
   console.log(comments);
