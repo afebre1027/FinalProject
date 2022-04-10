@@ -22,8 +22,14 @@ function Home() {
               </div>
 
               <div className="friendsList ">
-                <h3 className="title">Friends List</h3>
-                <p>all friends here</p>
+                <h3 className="title">user</h3>
+                <p>
+                <FriendList
+            username={user.username}
+            friendCount={user.friendCount}
+            friends={user.friends}
+          />
+                </p>
               </div>
             </div>
           </Col>

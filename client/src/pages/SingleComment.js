@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { FaRegThumbsUp } from "react-icons/fa";
 
 import CommentList from "../components/CommentList";
 
@@ -20,22 +21,28 @@ const SingleComment = (props) => {
   }
 
   return (
-    <div>
-      <div className="card mb-3">
-        <p className="card-header">
+    <div className="main">
+      <div className="comment-container card mb-3">
+        <p className="comments card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
             {comment.username}
           </span>{" "}
-          comment on {comment.createdAt}
+          commented on {comment.createdAt}
         </p>
         <div className="card-body">
-          <p>{comment.commentText}</p>
+          <h5 className="card-text">{comment.commentText}</h5>
+        </div>
+        <div className="card-footer">
+          <button>
+            <FaRegThumbsUp />
+          </button>
+          <h8 className="responseForm">
+            {comment.reactionCount > 0 && (
+              <CommentList reactions={comment.reactions} />
+            )}
+          </h8>
         </div>
       </div>
-
-      {comment.reactionCount > 0 && (
-        <CommentList reactions={comment.reactions} />
-      )}
     </div>
   );
 };

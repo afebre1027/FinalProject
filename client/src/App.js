@@ -10,21 +10,34 @@ import {
   createHttpLink,
 } from "@apollo/client";
 
-import Home from "./components/Home";
+import { setContext } from '@apollo/client/link/context';
+
+import Home from "./pages/Home";
 import Header from "./components/Header";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SingleComment from "./pages/SingleComment";
+import Steam from "./pages/Steam";
 import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -32,8 +45,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <Header />
+        <Header />
+        <div className="homeBody">
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
@@ -41,6 +54,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile/:username?" component={Profile} />
               <Route exact path="/comment/:id?" component={SingleComment} />
+              <Route exact path="/steam/:id?" component={Steam} />
 
               <Route component={NoMatch} />
             </Switch>

@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  }
+}
 
 /* header and nav bar */
 header {
-  background-color: #133c55;
+  background-color: #005582;
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -17,21 +17,29 @@ header {
   margin-bottom: 0px;
 }
 
+a {
+  text-decoration: none !important;
+  text-align: center;
+  color: white !important;
+}
+svg {
+  color: white;
+}
+
 .menu-item {
   display: flex;
   flex-direction: row;
 }
 
-
-ul.menu {
+.menu {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-li.menu-item {
-  padding: 7px;
+.menu-item {
+  padding: 5px;
 }
 
 nav {
@@ -39,7 +47,7 @@ nav {
   margin-bottom: 0px;
 }
 
-nav  li {
+nav li {
   cursor: pointer;
 }
 
@@ -52,17 +60,17 @@ nav  li {
   width: auto;
   top: 33.35vh;
   left: 0;
-  background:linear-gradient(#133c55, #34a0a4 ,#133c55);
+  background: linear-gradient(#133c55, #34a0a4, #133c55);
   overflow-x: hidden;
   padding: 20px 20px;
   color: #fff;
 }
 .responseForm {
-float: right;
+  float: right;
 }
 
 div.col-sm-9 {
-  padding:20px;
+  padding: 20px;
   margin: 20px 5% 10px 0px;
 }
 
@@ -73,7 +81,7 @@ div.col {
 }
 
 .footer {
-  background-color: #133c55;
+  background-color: #005582;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -124,18 +132,72 @@ div.col {
   text-align: center;
 }
 
+/* login page */
+.loginContainer {
+  font-family: arial;
+  font-size: 20px;
+  margin: auto;
+  padding: 100px;
+  width: 100%;
+  height: 100%;
+border-radius: 10px;
+  background-color: #00c2c7;
+  box-shadow: 0px 0px 50px 10px #daf8e3;
+}
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+div.container {
+  /* background-color: #929ca1; */
+  background: linear-gradient(#005582,#00c2c7,#005582);
+  padding: 80px;
+}
+div.homeBody {
+  background: linear-gradient(#005582,#0086ad,#005582);
+}
+
+.loginCard {
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  border: 3px solid #005582;
+  border-radius: 10px;
+  box-shadow: 0px 0px 50px 30px #daf8e3;
+}
+
+h4.card-header {
+  background: linear-gradient(#0086ad, #daf8e3);
+}
+
+div.card-body {
+  background-color: #daf8e3;
+  
+}
+
+.subButton {
+  border: 1px solid black;
+  width: 50%;
+  margin-top: 1%;
+  border-radius: 10px;
+}
+
+input#email.form-input {
+  margin: 1%;
+}
+
+input {
+  border-radius: 10px;
+}
+
+/* profile page */
+
 @media screen and (max-width: 992px) {
   header {
     width: 100%;
+  }
+  input {
+    width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -151,7 +213,7 @@ div.col {
   }
 
   nav ul {
-    display: flex; 
+    display: flex;
     font-size: 100%;
     flex-direction: row;
     justify-content: space-between;
