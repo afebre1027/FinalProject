@@ -6,6 +6,7 @@ const typeDefs = gql`
         username: String!
         email: String!
         friends: [User]
+        comments:[Comment]
     }
 
     type Comment {

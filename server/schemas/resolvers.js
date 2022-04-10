@@ -8,12 +8,14 @@ const resolvers = {
             return User.find()
                 .select('-__v -password')
                 .populate('friends')
+                .populate('comments')
         },
 
         user: async (parent, {username}) => {
             return User.findOne({username})
                 .select('-__v -password')
                 .populate('friends')
+                .populate('comments')
         },
 
         me: async (parent, args, context) => {
@@ -21,6 +23,7 @@ const resolvers = {
                 const userData = await User.findOne({_id: context.user._id})
                     .select('-__v -password')
                     .populate('friends')
+                    .populate('comments')
 
                 return userData;
             }
@@ -70,11 +73,11 @@ const resolvers = {
                 const comment = await Comment.create({...args, username:context.user.username});
                 
 
-                // const updatedUser = await User.findOneAndUpdate(
-                //     {username: args.profile},
-                //     {$push: {comments: comment._id }},
-                //     {new: true, runValidators: true}
-                // ).populate('comments');
+                await User.findOneAndUpdate(
+                    {username: context.user.username},
+                    {$push: {comments: comment._id }},
+                    {new: true, runValidators: true}
+                );
 
                 return  comment;
             }

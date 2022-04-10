@@ -25,12 +25,12 @@ const userSchema = new Schema(
                 ref: 'User'
             }
         ],
-        // comments: [
-        //     {
-        //         type: Schema.Types.ObjectId,
-        //         ref: 'Comment'
-        //     }
-        // ],
+        comments: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Comment'
+            }
+        ],
     },
 
     {
