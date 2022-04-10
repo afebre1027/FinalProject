@@ -14,6 +14,20 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_ME_BASIC = gql`
+    {
+        me{
+            _id
+            username
+            email
+            friends{
+                _id
+                username
+            }
+        }
+    }
+`;
+
 export const QUERY_ME = gql`
     {
         me{
@@ -23,6 +37,12 @@ export const QUERY_ME = gql`
             friends{
                 _id
                 username
+            }
+            comments{
+                _id
+                username
+                commentText
+                createdAt
             }
         }
     }
@@ -49,12 +69,12 @@ export const QUERY_SINGLE_COMMENT= gql`
 export const QUERY_COMMENTS = gql`
     query comments{
         comments {
-        _id
-        commentText
-        createdAt
-        username
-        replyCount    
-        likeCount
+            _id
+            commentText
+            createdAt
+            username
+            replyCount    
+            likeCount
         }
     }
 `;
