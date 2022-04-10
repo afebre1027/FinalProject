@@ -19,7 +19,6 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
-  console.log(data);
 
   // redirect to personal profile page if username is the logged-in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
