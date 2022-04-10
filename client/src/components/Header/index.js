@@ -14,7 +14,9 @@ const Header = () => {
         <nav className="text-center">
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
+          <Link to="/profile"><FaHome/></Link>
           <Link to="/steam"><FaSteam /></Link>
+          
         </nav>
       </div>
     </header>

@@ -1,13 +1,13 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_THOUGHTS } from "../utils/queries";
-import CommentList from "../components/ThoughtList";
+import { QUERY_COMMENTS } from "../utils/queries";
+import CommentList from "../components/CommentList";
 
 const Home = () => {
   // use useQuery hook to make query request
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
+  const { loading, data } = useQuery(QUERY_COMMENTS);
 
-  const thoughts = data?.thoughts || [];
-  console.log(thoughts);
+  const comments = data?.comments || [];
+  console.log(comments);
 
   return (
     <main>
@@ -26,3 +26,4 @@ const Home = () => {
     </main>
   );
 };
+export default Home;

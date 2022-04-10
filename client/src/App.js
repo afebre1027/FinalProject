@@ -10,13 +10,14 @@ import {
   createHttpLink,
 } from "@apollo/client";
 
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Header from "./components/Header";
 import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SingleComment from "./pages/SingleComment";
+import Steam from "./pages/Steam";
 import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
@@ -41,6 +42,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile/:username?" component={Profile} />
               <Route exact path="/comment/:id?" component={SingleComment} />
+              <Route exact path="/steam/:id?" component={Steam} />
 
               <Route component={NoMatch} />
             </Switch>

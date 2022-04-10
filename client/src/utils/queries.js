@@ -61,12 +61,12 @@ query thoughts($username: String) {
         thoughtText
         createdAt
         username
-        reactionCount
-        reactions {
+        replyCount
+        replies {
             _id
             createdAt
             username
-            reactionBody
+            replyBody
         }
     }
 }
