@@ -51,7 +51,7 @@ const CommentForm = () => {
         className="flex-row justify-center justify-space-between-md align-stretch"
         onSubmit={handleFormSubmit}
       >
-        <textarea
+        <textarea 
           placeholder="New Comment..."
           value={commentText}
           className="form-input col-12 col-md-9"

@@ -7,27 +7,31 @@ const CommentList = ({ comments, title }) => {
   }
 
   return (
-    <div>
+    <div className="">
       <h3>{title}</h3>
       {comments &&
         comments.map((comment) => (
           <div key={comment._id} className="card mb-3">
-            <p className="card-header">
+            <h4 className="card-header loginHeader" style={{fontSize: 15}}>
               <Link
-              to={`/profile/${comment.username}`}
-              style={{ fontWeight: 500 }}
-              className="text-light">
+                to={`/profile/${comment.username}`}
+                style={{ fontWeight: 500 }}
+                className="text-light"
+              >
                 {comment.username}
-                </Link> {""}
-                commented on {comment.createdAt}
-            </p>
-            <div className="card-body">
+              </Link>{" "}
+              {""}
+              commented on {comment.createdAt}
+            </h4>
+
+            <div className="card-body comment-body">
               <Link to={`/comment.${comment._id}`}>
-              <p>{comment.commentText}</p>
-              <p className="mb-0">
-                Reactions: {comment.reactionCount} || Click to{" "}
-                {comment.reactionCount ? "see" : "start"} the discussion!
-              </p>
+                <p style={{ color: "#133c55" }}>{comment.commentText}</p>
+
+                <p className="mb-0" style={{ color: "#133c55" }}>
+                  Replies: {comment.replyCount} || Click to{" "}
+                  {comment.reactionCount ? "see" : "start"} Comment!
+                </p>
               </Link>
             </div>
           </div>
