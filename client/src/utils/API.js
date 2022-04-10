@@ -19,17 +19,15 @@ app.get('/steam/player/games', (req, res) => {
   });
 });
 
-
 app.get('/steam/player/friend', (req, res) => {
-      let id = req.session.passport.user.match(/\d+$/)[0];
+  let id = req.session.passport.user.match(/\d+$/)[0];
   console.log(id);
-    console.log("get /steam/player");
+  console.log('get /steam/player');
 
-    let url =
-      "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=' +
+  let url =
+    'http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=' +
     process.env.STEAM_KEY +
-      '&steamid=' +
-        id +
-      '&relationship=friend"
-})
-
+    '&steamid=' +
+    id +
+    '&relationship=friend';
+});
