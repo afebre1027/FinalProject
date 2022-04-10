@@ -1,15 +1,15 @@
 import React from "react";
-import Nav from "../Nav";
 import { Link } from "react-router-dom";
 import { FaSteam, FaHome, FaDiscord, FaPlaystation } from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";
+import {CgProfile} from"react-icons/cg";
 
 const Header = () => {
   return (
     <header className="header">
       <div className="menuContainer">
         <Link to="/">
-          <h1>All in One</h1>
+          <h1><FaHome size={30} /></h1>
         </Link>
 
         <nav className="menu">
@@ -21,7 +21,7 @@ const Header = () => {
           </div>
           <div className="menu-item">
             <Link to="/profile">
-              <FaHome size={30} />
+              <CgProfile size={30} />
             </Link>
           </div>
           <div className="menu-item">
