@@ -1,12 +1,34 @@
-import React from "react";
-import { FaSteam } from "react-icons/fa";
+import React from 'react';
+import { FaSteam } from 'react-icons/fa';
 
 function Steam() {
+  let user;
+  const renderItems = () => {
+    if (!user) {
+      return (
+        <>
+          <h2>Welcome Please log in.</h2>
+          <p>
+            <a href="auth/steam">Sign On with Steam</a>
+          </p>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h2>
+            Hello, {user.displayName} . - <a href="logout">Logout</a>
+          </h2>
+        </>
+      );
+    }
+  };
+
   return (
     <section className="steamContainer">
       <div className="steamIcon">
         <h1>
-          <FaSteam size={70}  style={{ color: "#4e5c64"}}/>
+          <FaSteam size={70} style={{ color: '#4e5c64' }} />
         </h1>
       </div>
       <div class="card steamInfo">
@@ -17,7 +39,7 @@ function Steam() {
           <h4 class="card-title">Games go here</h4>
           <h6 class="card-text">friends list goes here</h6>
           <a href="#" class="btn btn-primary">
-            sign in / login link
+            <h3>{renderItems}</h3>
           </a>
         </div>
       </div>
