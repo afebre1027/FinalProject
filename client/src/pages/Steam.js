@@ -38,9 +38,8 @@ function Steam() {
         <div class="card-body steamBody">
           <h4 class="card-title">Games go here</h4>
           <h6 class="card-text">friends list goes here</h6>
-          <a href="#" class="btn btn-primary">
-            <h3>{renderItems}</h3>
-          </a>
+          <a href="/auth/steam" class="btn btn-primary"></a>
+          {renderItems}
         </div>
       </div>
     </section>
