@@ -80,7 +80,7 @@ mutation likeComment($commentId: ID!){
       replies{
           username
           replyText
-          created
+          createdAt
       }
       replyCount
     }

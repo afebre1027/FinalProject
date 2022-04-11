@@ -14,16 +14,19 @@ const Profile = () => {
   const { username: userParam } = useParams();
 
   const [addFriend] = useMutation(ADD_FRIEND);
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  const { loading, data} = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
 
   const user = data?.me || data?.user || {};
 
+
   // redirect to personal profile page if username is the logged-in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/profile" />;
   }
+
+
 
   if (loading) {
     return <div>Loading...</div>;
