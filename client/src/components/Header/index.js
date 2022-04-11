@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaSteam, FaHome, FaDiscord, FaPlaystation } from "react-icons/fa";
+import { FaSteam, FaHome } from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
 
@@ -17,7 +17,7 @@ const Header = () => {
       <div className="menuContainer">
         <Link to="/">
           <h1>
-            <FaHome size={30} />
+            <FaHome size={50} />
           </h1>
         </Link>
 
@@ -26,15 +26,15 @@ const Header = () => {
             {Auth.loggedIn() ? (
               <>
                 <Link to="/profile">
-                  <CgProfile size={30} />
+                  <CgProfile size={50} />
                 </Link>
 
                 <Link to="/steam">
-                  <FaSteam size={30} />
+                  <FaSteam size={50} />
                 </Link>
 
                 <a href="/">
-                  <GiExitDoor size={30} onClick={logout} />
+                  <GiExitDoor size={50} onClick={logout} />
                 </a>
               </>
             ) : (

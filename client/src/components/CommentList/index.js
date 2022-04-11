@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { GiGameConsole } from "react-icons/gi";
 
 const CommentList = ({ comments, title }) => {
   if (!comments.length) {
@@ -12,7 +13,7 @@ const CommentList = ({ comments, title }) => {
       {comments &&
         comments.map((comment) => (
           <div key={comment._id} className="card mb-3">
-            <h4 className="card-header loginHeader" style={{fontSize: 15}}>
+            <h4 className="card-header loginHeader" style={{ fontSize: 15 }}>
               <Link
                 to={`/profile/${comment.username}`}
                 style={{ fontWeight: 500 }}

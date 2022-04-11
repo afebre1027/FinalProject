@@ -10,7 +10,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -22,7 +22,6 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SingleComment from "./pages/SingleComment";
 import Steam from "./pages/Steam";
-
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -54,8 +53,8 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile/:username?" component={Profile} />
-              <Route exact path="/comment/:id?" component={SingleComment} />
+              <Route exact path="/profile/:id?" component={Profile} />
+              <Route exact path="/comment/:id" component={SingleComment} />
               <Route exact path="/steam/:id?" component={Steam} />
 
               <Route component={NoMatch} />

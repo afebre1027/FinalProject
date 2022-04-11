@@ -51,7 +51,7 @@ nav li {
   cursor: pointer;
 }
 
-/* home page, left profile, center comments & footer */
+/* home page */
 .homeContainer {
   background-color: #d0f4de;
 }
@@ -79,6 +79,41 @@ div.col {
   font-size: calc(10px + 2vmin);
   color: white;
   position: relative;
+}
+
+.commentFriendContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+}
+.friendList {
+  padding-top: 10px;
+  margin-left: 20px;
+  text-align: center;
+  background: linear-gradient(#005582, #00c2c7, #005582);
+  color: #d0f4de;
+}
+
+.characterCount {
+  color: white;
+  padding-left: 20px;
+  margin: 0;
+}
+
+form {
+padding-left: 18%;
+}
+
+textarea {
+  border-radius: 10px;
+  min-height: 100px;
+  border: 3px solid #00c2c7;
+  background-color: #d0f4de;
+}
+
+.sideImage {
+  display: flex;
+  flex-direction: column;
 }
 
 /*  steam page */
@@ -122,11 +157,17 @@ div.card-header.steamHeader {
 }
 
 div.container {
-  background: linear-gradient(#005582, #00c2c7, #005582);
-  padding: 80px;
+  background: linear-gradient(
+    rgba(0, 85, 130, 0.9),
+    rgba(0, 194, 199, 0.5),
+    rgba(0, 85, 130, 0.9)
+  );
+  padding-top: 10px;
+  margin: 10px;
 }
 div.homeBody {
-  background: linear-gradient(#005582, #0086ad, #005582);
+  background-image: url(../public/blue-games-retro-plain-820x532.jpg);
+  padding-top: 80px;
 }
 
 .loginCard {
