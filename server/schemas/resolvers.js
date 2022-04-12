@@ -40,6 +40,7 @@ const resolvers = {
         comments: async () => {
             const comments = await Comment.find()
                 .select('-__v')
+                .sort({createdAt: -1})
                 .populate('replies')
             
             return comments;
@@ -95,7 +96,7 @@ const resolvers = {
 
                 const likedComment = await Comment.findByIdAndUpdate(
                     {_id: commentID},
-                    {$push: {likes: context.user._id}},
+                    {$addToSet: {likes: context.user._id}},
                     {new: true}
                 )
 

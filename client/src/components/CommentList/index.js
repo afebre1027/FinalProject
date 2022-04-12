@@ -25,7 +25,7 @@ const CommentList = ({ comments, title }) => {
             </h4>
 
             <div className="card-body comment-body">
-              <Link to={`/comment.${comment._id}`}>
+              <Link to={`/comment/${comment._id}`}>
                 <p style={{ color: "#133c55" }}>{comment.commentText}</p>
 
                 <p className="mb-0" style={{ color: "#133c55" }}>
