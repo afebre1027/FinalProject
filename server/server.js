@@ -1,7 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-
+const routes = require('./routes');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
@@ -40,9 +40,9 @@ passport.deserializeUser((user, done) => {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: 'http://localhost:' + port + '/api/auth/steam/return',
-      realm: 'http://localhost:' + port + '/',
-      apiKey: 'YOUR_API_KEY',
+      returnURL: 'http://localhost:' + PORT + '/api/auth/steam/return',
+      realm: 'http://localhost:' + PORT + '/',
+      apiKey: '5BF49F390AD6A3E23F692965A6B9AAEA',
     },
     function (identifier, profile, done) {
       process.nextTick(function () {
@@ -75,10 +75,28 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.use(routes);
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 // });
+
+// Routes
+app.get('/', (req, res) => {
+  res.send(req.user);
+});
+app.get(
+  '/api/auth/steam',
+  passport.authenticate('steam', { failureRedirect: '/' }),
+  function (req, res) {
+    res.redirect('/');
+  }
+);
+app.get(
+  '/api/auth/steam/return',
+  passport.authenticate('steam', { failureRedirect: '/' }),
+  function (req, res) {
+    res.redirect('/');
+  }
+);
 
 db.once('open', () => {
   app.listen(PORT, () => {

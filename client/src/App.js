@@ -1,39 +1,38 @@
-import React, { useState } from "react";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import {
   ApolloProvider,
   ApolloClient,
   InMemoryCache,
   createHttpLink,
-} from "@apollo/client";
+} from '@apollo/client';
 
 import { setContext } from '@apollo/client/link/context';
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NoMatch from "./pages/NoMatch";
-import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
-import SingleComment from "./pages/SingleComment";
-import Steam from "./pages/Steam";
-
+import Home from './pages/Home';
+import Login from './pages/Login';
+import NoMatch from './pages/NoMatch';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
+import SingleComment from './pages/SingleComment';
+import Steam from './pages/Steam';
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem('id_token');
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
 });
@@ -44,6 +43,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+  if (window.location.pathname === 'http://localhost:3000/api/auth/steam') {
+    return <div />; // must return at least an empty div
+  }
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -58,7 +60,7 @@ function App() {
               <Route exact path="/comment/:id?" component={SingleComment} />
               <Route exact path="/steam/:id?" component={Steam} />
 
-              <Route component={NoMatch} />
+              {/* <Route component={NoMatch} /> */}
             </Switch>
           </div>
           <Footer></Footer>

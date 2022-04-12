@@ -16,8 +16,8 @@ function Steam() {
         <div class="card-body steamBody">
           <h4 class="card-title">Games go here</h4>
           <h6 class="card-text">friends list goes here</h6>
-          <a href="#" class="btn btn-primary">
-            <a href="http://localhost:3000/api/auth/steam">Sign in</a>
+          <a href="/api/auth/steam" class="btn btn-primary">
+            Sign in
           </a>
         </div>
       </div>
