@@ -8,7 +8,7 @@ const db = require('./config/connection');
 var passport = require('passport');
 var session = require('express-session');
 var passportSteam = require('passport-steam');
-var SteamStrategy = passportSteam.Strategy;
+SteamStrategy = require('./utils/passport-steam').Strategy;
 
 const PORT = process.env.PORT || 3001;
 const app = express();

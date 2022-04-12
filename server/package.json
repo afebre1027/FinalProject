@@ -18,7 +18,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
     "passport": "^0.5.2",
-    "passport-steam": "^1.0.17"
+    "passport-openid": "^0.4.0",
+    "passport-steam": "^1.0.17",
+    "steam-web": "^0.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
