@@ -58,6 +58,7 @@ const SingleComment = (props) => {
           <button
             onClick={() => handleLikeComment(comment._id)}
           >   
+
             <FaRegThumbsUp
             style={{color: 'blue'}} />
           </button>

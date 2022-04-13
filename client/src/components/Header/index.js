@@ -1,13 +1,15 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaSteam, FaHome } from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
 
-import Auth from "../../utils/auth";
+
+import Auth from '../../utils/auth';
 
 const Header = () => {
-  const logout = event => {
+  const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   }

@@ -1,7 +1,9 @@
-import React from "react";
+import {Button,React,useEffect,useState} from "react";
 import profileImage from "../../assets/images/background.jpg";
 import { Container, Row, Col } from "react-bootstrap";
 import {FaRegThumbsUp} from "react-icons/fa"
+import UserAccount from "../account/UserAccount";
+
 
 function Home() {
   return (
