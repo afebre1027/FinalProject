@@ -58,7 +58,8 @@ const SingleComment = (props) => {
           <button
             onClick={() => handleLikeComment(comment._id)}
           >   
-            <FaRegThumbsUp />
+            <FaRegThumbsUp
+            style={{color: 'blue'}} />
           </button>
           <p>{comment.likeCount}</p>
           <h8 className="responseForm">
