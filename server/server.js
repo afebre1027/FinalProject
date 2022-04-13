@@ -108,16 +108,19 @@ app.get('/', (req, res) => {
 app.get(
   '/api/auth/steam',
   passport.authenticate('steam', { failureRedirect: '/' }),
+
 );
 app.get(
   '/api/auth/steam/return',
   function(req, res, next){
     req.url = req.originalUrl;
+    console.log(req.url);
     next();
   },
   passport.authenticate('steam', { failureRedirect: '/' }),
   function (req, res) {
     res.redirect('/steam');
+    console.log(res);
   }
 );
 

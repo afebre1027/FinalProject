@@ -6,24 +6,6 @@ import UserAccount from "../account/UserAccount";
 
 
 function Home() {
-  
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetchUsername();
-  }, [user]);
-
-  async function fetchUsername() {
-    const res = await fetch("/api/account");
-    if (user === null) {
-      const json = await res.json();
-      setUser(json[0].user);
-    }
-  }
-
-  function onLogout() {
-    setUser(null);
-  }
   return (
     <section className= "homeContainer ">
       {/* profile and friends left side */}
@@ -33,17 +15,6 @@ function Home() {
             <div className="profileInfo sideBar">
               <div>
                 <h2 id="home">Username</h2>
-                {user === null ? (
-            <Button href="/auth/steam">
-              <img
-                src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png"
-                alt="sign in logo"
-              />
-            </Button>
-          ) : (
-            <UserAccount user={user} onLogout={onLogout} />
-          )}
-                
                 <img
                   src={profileImage}
                   className="my-img"

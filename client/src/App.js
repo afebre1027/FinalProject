@@ -57,7 +57,7 @@ function App() {
               <Route exact path="/profile/:username?" component={Profile} />
               <Route exact path="/comment/:id?" component={SingleComment} />
               <Route exact path="/steam/:id?" component={Steam} />
-              <Redirect from='/api/auth/steam/return' to='/steam'/>
+              {/* <Redirect from='/api/auth/steam/return' to='/steam'/> */}
 
               <Route component={NoMatch} />
             </Switch>

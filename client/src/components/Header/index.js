@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { FaSteam, FaHome, FaDiscord, FaPlaystation } from 'react-icons/fa';
 import { GiExitDoor } from 'react-icons/gi';
 import { CgProfile } from 'react-icons/cg';
+
 import Auth from '../../utils/auth';
+
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-  };
+  }
+
   return (
     <header className="header">
       <div className="menuContainer">

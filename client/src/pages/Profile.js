@@ -47,9 +47,9 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div className="md-12">
       <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
+        <h2 className="p-3 display-inline-block" style={{ color: "#d0f4de"}}>
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
@@ -60,7 +60,7 @@ const Profile = () => {
         )}
       </div>
 
-      <div className="flex-row justify-space-between mb-3">
+      <div className="flex-row justify-space-between mb-3 commentFriendContainer cfc">
         <div className="col-12 mb-3 col-lg-8">
           <CommentList
             comments={user.comments}
@@ -68,7 +68,7 @@ const Profile = () => {
           />
         </div>
 
-        <div className="col-12 col-lg-3 mb-3">
+        <div className="col-12 col-lg-3 mb-3 friendList">
           <FriendList
             username={user.username}
             friendCount={user.friendCount}
@@ -76,7 +76,6 @@ const Profile = () => {
           />
         </div>
       </div>
-      <div className="mb-3">{!userParam && <CommentForm />}</div>
     </div>
   );
 };

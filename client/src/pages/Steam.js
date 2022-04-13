@@ -14,15 +14,15 @@ function Steam() {
   }, []);
 
   async function fetchUser() {
-     await fetch("/api/account")
-      .then((response => response.json())
-      .then((res) => setUser(res[0].user))
-      .catch((err) => console.log(err)))
+    const res = await fetch("/api/account");
+    const json = await res.json();
+    setUser(json[0].user);
   }
 
   async function fetchGames() {
-     await fetch("/api/ownedgames")
-      .then(response => response.json())
+    const res = await fetch("/api/ownedgames");
+    const json = await res
+      .json()
       .then(responseJson => {
         setGameList(responseJson[0].gamelist);
         setIsLoading(false);
