@@ -22,7 +22,7 @@ passport.use(
     {
       returnURL: 'http://localhost:3000/api/auth/steam/return',
       realm: 'http://localhost:3000/',
-      apiKey: 'API_KEY',
+      apiKey: process.env.API_KEY,
     },
     function (identifier, profile, done) {
       process.nextTick(function () {
@@ -89,7 +89,7 @@ app.get('/api/ownedgames', ensureAuthenticated, function (req, res) {
   var url =
     'http://api.steampowered.com/IPlayerService/GetOwnedGames/' +
     'v0001/?key=' +
-    'API_KEY' +
+    process.env.API_KEY +
     '&include_played_free_games=1&include_appinfo=1&steamid=' +
     req.user.id;
   console.log(req.user.id);
