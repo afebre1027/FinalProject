@@ -9,7 +9,6 @@ var session = require('express-session');
 var passportSteam = require('passport-steam');
 const SteamStrategy = require('./utils/passport-steam').Strategy;
 
-
 // Required to get data from user for sessions
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -23,7 +22,7 @@ passport.use(
     {
       returnURL: 'http://localhost:3000/api/auth/steam/return',
       realm: 'http://localhost:3000/',
-      apiKey: '5BF49F390AD6A3E23F692965A6B9AAEA',
+      apiKey: 'API_KEY',
     },
     function (identifier, profile, done) {
       process.nextTick(function () {
@@ -53,11 +52,10 @@ const startServer = async () => {
 
 startServer();
 
-
 app.use(
   session({
     secret: 'Whatever_You_Want',
-    name:'steamSignOn',
+    name: 'steamSignOn',
     saveUninitialized: true,
     resave: false,
     cookie: {
@@ -82,20 +80,20 @@ if (process.env.NODE_ENV === 'production') {
 //   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 // });
 
-app.get("/api/account", ensureAuthenticated, function(req, res) {
+app.get('/api/account', ensureAuthenticated, function (req, res) {
   res.json([{ user: req.user }]);
 });
 
-app.get("/api/ownedgames", ensureAuthenticated, function(req, res) {
+app.get('/api/ownedgames', ensureAuthenticated, function (req, res) {
   // Calculate the Steam API URL we want to use
   var url =
-    "http://api.steampowered.com/IPlayerService/GetOwnedGames/" +
-    "v0001/?key=" +
-    '5BF49F390AD6A3E23F692965A6B9AAEA' +
-    "&include_played_free_games=1&include_appinfo=1&steamid=" +
+    'http://api.steampowered.com/IPlayerService/GetOwnedGames/' +
+    'v0001/?key=' +
+    'API_KEY' +
+    '&include_played_free_games=1&include_appinfo=1&steamid=' +
     req.user.id;
-    console.log(req.user.id);
-  request.get(url, function(error, steamHttpResponse, steamHttpBody) {
+  console.log(req.user.id);
+  request.get(url, function (error, steamHttpResponse, steamHttpBody) {
     var body = JSON.parse(steamHttpBody);
     res.json([{ user: req.user, gamelist: body.response }]);
   });
@@ -107,12 +105,11 @@ app.get('/', (req, res) => {
 });
 app.get(
   '/api/auth/steam',
-  passport.authenticate('steam', { failureRedirect: '/' }),
-
+  passport.authenticate('steam', { failureRedirect: '/' })
 );
 app.get(
   '/api/auth/steam/return',
-  function(req, res, next){
+  function (req, res, next) {
     req.url = req.originalUrl;
     console.log(req.url);
     next();
@@ -131,6 +128,8 @@ db.once('open', () => {
 });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  if (req.isAuthenticated()) {
+    return next();
+  }
   res.redirect('/');
-};
+}
