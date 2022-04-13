@@ -45,14 +45,14 @@ const SingleComment = (props) => {
   return (
     <div className="main">
       <div className="comment-container card mb-3">
-        <p className="comments card-header">
+        <p className="comments card-header loginHeader">
           <span style={{ fontWeight: 700 }} className="text-light">
             {comment.username}
           </span>{" "}
           commented on {comment.createdAt}
         </p>
-        <div className="card-body">
-          <h5 className="card-text">{comment.commentText}</h5>
+        <div className="card-body comment-body">
+          <h5 className="card-text" style={{color: "black"}}>{comment.commentText}</h5>
         </div>
         <div className="card-footer">
           <button
@@ -62,8 +62,8 @@ const SingleComment = (props) => {
           </button>
           <p>{comment.likeCount}</p>
           <h8 className="responseForm">
-            {comment.reactionCount > 0 && (
-              <CommentList reactions={comment.reactions} />
+            {comment.replyCount > 0 && (
+              <CommentList replies={comment.replies} />
             )}
           </h8>
         </div>
