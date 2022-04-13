@@ -2,7 +2,9 @@ import { React, useState } from "react";
 
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
-import { QUERY_COMMENTS, QUERY_ME } from '../../utils/queries';
+import { QUERY_COMMENTS, QUERY_ME } from "../../utils/queries";
+import { RiMailSendLine } from "react-icons/ri";
+
 
 const CommentForm = () => {
   const [commentText, setText] = useState("");
@@ -42,25 +44,22 @@ const CommentForm = () => {
   };
 
   return (
-    <div>
-      <p className={`m-0 ${characterCount === 280 ? "text-error" : ""}`}>
-        Letter count: {characterCount}/280
-        {error && <span className="ml-2">Please enter text...</span>}
-      </p>
-      <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={handleFormSubmit}
-      >
-        <textarea 
+    <div className="commentForm">
+      <form className="formContainer" onSubmit={handleFormSubmit}>
+        <textarea
           placeholder="New Comment..."
           value={commentText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
-          Submit
+        <button className="btn" type="submit">
+          <RiMailSendLine size={30} />
         </button>
+        <p className={`m-0 characterCount ${characterCount === 280 ? "text-error" : ""}`}>
+        {error && <span className="ml-2">Please enter text...</span>}
+      </p>
       </form>
+
     </div>
   );
 };

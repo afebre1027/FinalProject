@@ -11,11 +11,11 @@ const FriendList = ({ friendCount, username, friends }) => {
   return (
     <div>
       <h5>
-        {username}'s {friendCount} {friendCount === 1 ? "friend" : "friends"}
+        {username}'s {friendCount} {friendCount === 1 ? "friend" : "Friends"}
       </h5>
       {friends.map((friend) => (
         <button className="btn w-100 display-block mb-2" key={friend._id}>
-          <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
+          <Link sytle={{color: "black"}} to={`/profile/${friend.username}`}>{friend.username}</Link>
         </button>
       ))}
     </div>
