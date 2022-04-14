@@ -8,7 +8,7 @@ var passport = require('passport');
 var session = require('express-session');
 var passportSteam = require('passport-steam');
 const SteamStrategy = require('./utils/passport-steam').Strategy;
-
+const apiKey = process.env.REACT_APP_ACCESS_KEY;
 // Required to get data from user for sessions
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -22,7 +22,7 @@ passport.use(
     {
       returnURL: 'http://localhost:3000/api/auth/steam/return',
       realm: 'http://localhost:3000/',
-      apiKey: process.env.API_KEY,
+      apiKey: process.env.apikey,
     },
     function (identifier, profile, done) {
       process.nextTick(function () {
@@ -89,7 +89,7 @@ app.get('/api/ownedgames', ensureAuthenticated, function (req, res) {
   var url =
     'http://api.steampowered.com/IPlayerService/GetOwnedGames/' +
     'v0001/?key=' +
-    process.env.API_KEY +
+    process.env.apikey +
     '&include_played_free_games=1&include_appinfo=1&steamid=' +
     req.user.id;
   console.log(req.user.id);
